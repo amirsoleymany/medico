@@ -1,7 +1,7 @@
 <?php
 include_once '../function/f-users.php';
 include_once '../function/function.php';
-$select_permitions = select_user_permition($_SESSION['login_user']);
+/*$select_permitions = select_user_permition($_SESSION['login_user']);
 if(strpos($select_permitions->permition,'made_user.php') !==false):
 if(isset($_POST['submit'])){
     $info = $_POST['info'];
@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     }
     $result = 'ok_register_user';
     header("location:dashboard.php?page=setting-user&op={$result}");
-}
+}*/
 ?>
 <head>
     <script src="http://localhost/medico/panel/front-paneel/users/jquery-2.1.3.min.js"></script>
@@ -359,5 +359,5 @@ if(isset($_POST['submit'])){
         </button>
     </div>
     -->
-<?php endif; ?>
+<?php /*endif; */?>
 </body>
