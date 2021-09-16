@@ -1,28 +1,53 @@
+<?php
+session_start();
+include_once '../panel/function/dbconnect.php';
+include_once '../panel/function/f-users.php';
+include_once '../panel/function/function.php';
+if (isset($_POST['submit'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $pdo = connect_db();
+    $query = $pdo->prepare("SELECT * FROM `users_tbl` WHERE username ='$username'");
+    $query->execute();
+    $res = $query->fetch(PDO::FETCH_OBJ);
+    if ($res){
+        if ($res->password == $password){
+            $_SESSION['login'] = $username;
+            /*if(isset($_POST['remeber'])) {
+                setcookie('username', $username, time() + (86400 * 30));
+                setcookie('passwoed', $password, time() + (86400 * 30));
+            }*/
+            echo 'ورود شما موفقیت آمیز بود';
+        }
+        else{
+            echo "<pre>کاربرگرامی:
+رمز عبور اشتباه است</pre>";
+        }
+    }
+    else{
+        echo "<pre>کابرگرامی:
+نام کاربری اشتباه است.
+مجددا تلالش نمایید.</pre>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fa_IR">
 <head>
 	<title> سامانه پزشکی مدیکو </title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -30,7 +55,7 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="post">
 					<span class="login100-form-title" style="font-family: Broya;">
 						سامانه پزشکی مدیکو | جامع متمرکز
 					</span>
@@ -50,11 +75,17 @@
 							<i class="fa fa-lock"></i>
 						</span>
 					</div>
-					
+
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" style="font-family: Broya;">
-							<b> ورود </b>
-						</button>
+                        <button class="btn btn-primary" style="float: left;
+    position: relative;
+    background-color: #6a9be4;
+    border-color: #abffd7;
+    color: black;
+    bottom: 22px;
+    width: 287px;
+    border-radius: 25px;" type="submit" name = "submit">ورود</button>
+
 					</div>
 
 					<div class="text-center p-t-12">
@@ -74,24 +105,17 @@
 		</div>
 	</div>
 	
-	
 
-	
-<!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
-<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
 </body>

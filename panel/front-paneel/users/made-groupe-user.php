@@ -1,6 +1,40 @@
 <?php
 include_once '../function/f-users.php';
 include_once '../function/function.php';
+if(isset($_POST['send'])){
+    if(isset($_FILES['excel']['name'])){
+        $items = $_POST['item'];
+        $xlsxfile = $_FILES['excel'];
+        $location = 'upload/bulk_user_register/';
+        $pdo = connect_db();
+        include_once 'xlsx.php';
+        if($pdo){
+            $excel=SimpleXLSX::parse($_FILES['excel']['tmp_name']);
+            $excel->rows();
+            //echo "<pre>"; print_r($excel->rows());
+            $i=0;
+            foreach ($excel->rows() as $index=>$row){
+                //print_r($row);
+                $q="";
+                foreach ($row as $key=>$cell){
+                    //print_r($cell);echo'<br>';
+                    if($i==0){
+                        $q.="'".$cell."'varchar(50),";
+                    }else{
+                        $q.="'".$cell."',";
+                    }
+                }
+                if($i !==0){
+                    $query = $pdo->prepare("INSERT INTO users_tbl(username, password, mellicode, fullname, fathername, birthday, degree, field, phone, state, city, email, likedin, instagram, telegram, life_address, office_address, top_skill, desc_skill, img, permition, author, date_register, status) values (".rtrim($q,",").");");
+                    $query->execute();
+                }
+                $i++;
+            }
+        }
+        insert_info_file($items,$xlsxfile,$location);
+        update_info_bulk_user();
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">

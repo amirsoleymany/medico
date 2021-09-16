@@ -1,23 +1,17 @@
 <?php
 include_once '../function/f-users.php';
 include_once '../function/function.php';
-/*$select_permitions = select_user_permition($_SESSION['login_user']);
-if(strpos($select_permitions->permition,'made_user.php') !==false):
 if(isset($_POST['submit'])){
     $info = $_POST['info'];
     $img = $_FILES['img'];
     insert_info_user($info,$img);
-    $sms = $info['send_sms'];{
-        if($sms == 'yes'){
-            $id_sms = sms_info_register($info['phone'],$info['email'],$info['fullname']);
-        }
-    }
     $result = 'ok_register_user';
     header("location:dashboard.php?page=setting-user&op={$result}");
-}*/
+}
 ?>
 <head>
     <script src="http://localhost/medico/panel/front-paneel/users/jquery-2.1.3.min.js"></script>
+    <title>پیکربندی کاربر جدید</title>
 </head>
 <body>
 <div style="background-color: #212121;
@@ -350,14 +344,4 @@ if(isset($_POST['submit'])){
         })
     });
 </script>
-<?php /*else:*/?>
-<!--
-    <div class="alert alert-danger alert-dismissible fade show" style="line-height: 28px;" role="alert">
-        <strong>کاربر محترم!<br></strong> شما به بخش پیکربندی کاربر جدید دسترسی ندارید
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    -->
-<?php /*endif; */?>
 </body>

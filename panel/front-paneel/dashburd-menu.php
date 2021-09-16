@@ -1,13 +1,15 @@
 <?php
-include_once '../function/dbconnect.php';
+include_once '../function/f-users.php';
 ?>
-
-
+<!DOCTYPE HTML>
+<head>
+    <title>مدیرت پنل کاربری</title>
+</head>
             <div class="col-md-2">
                 <div class="admin-menu" style="background:#212121; text-align: right;">
                     <ul>
                         <div class="userwel" style="border-bottom: 7px solid #abffd7;background: #000000;">
-                            <img src="bootstrap/img/uuser.png">
+                          <img src="bootstrap/img/user.png">
                             <p>سامانه پزشکی مدیکو</p>
                         </div>
 
@@ -45,7 +47,7 @@ include_once '../function/dbconnect.php';
                         </li>
                         <ul class="sub-users">
                             <li><a href="dashburd.php?page=setting-user">تنظیمات کاربران </a></li>
-                            <li><a href="#">پیکربندی دسترسی ها</a></li>
+                            <li><a href="dashburd.php?page=config-access">پیکربندی دسترسی ها</a></li>
                             <li><a href="#">مشاهده همه کاربران</a></li>
 
                         </ul>

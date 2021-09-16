@@ -6,7 +6,7 @@ include_once '../function/function.php';
 <html lang="fa_IR">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>داشبورد</title>
 
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -36,12 +36,14 @@ include_once '../function/function.php';
                 <?php
                 if (isset($_GET['page'])){
                     switch ($_GET['page']){
-                        case 'new-user' :
-                            include_once 'users/user-new users.php';
-                            break;
                         case 'setting-user' :
                             include_once 'users/setting-user.php';
                             break;
+
+                        case 'config-access' :
+                            include_once 'users/config-access.php';
+                            break;
+
 
                     }
                 }

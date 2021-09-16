@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="bootstrap/js/popper.min.js">
     <link rel="stylesheet" href="bootstrap/js/bootstrap.min.js">
     <!--<link href="../bootstrap/fonts/IRANSansWeb.ttf">-->
-    <title>test</title>
+    <title>تنظیمات کاربران</title>
 </head>
 <body>
 <div style="background: #ffffff;
@@ -83,21 +83,6 @@
         <a href="#">اطلاعات بیشتر </a>
     </div>
     <div style="font-family: iransans">
-<!--<button class="accordion" style="border-radius: 5px;text-align: initial;">پیکربندی کاربر جدید</button>
-<div class="panel">
-
-   <?php /*include_once 'made-user.php'*/?>
-</div>-->
-
-<!--<button class="accordion" style="position: relative;top: 5px; border-radius: 5px;text-align: initial;">پیکربندی گروهی کاربران</button>
-<div class="panel">
-    <?php /*include_once 'made-groupe-user.php'; */?>
-    <br>
-    <hr><br>
-    <?php /*include_once 'list-upload-file.php'; */?>
-</div>-->
-
-
 
         <div id="accordion">
             <div class="card" style="text-align: initial;">
