@@ -10,7 +10,6 @@ if (isset($_POST['send_access'])){
     $result = 'ok_made_access';
     header("location:dashboard.php?page=config-access&op={$result}");
 }
-
 ?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">

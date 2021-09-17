@@ -1,6 +1,5 @@
 <?php
-include_once '../function/dbconnect.php';
-include_once '../function/function.php';
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="fa_IR">
@@ -42,6 +41,10 @@ include_once '../function/function.php';
 
                         case 'config-access' :
                             include_once 'users/config-access.php';
+                            break;
+
+                        case 'status-report' :
+                            include_once 'users/status-report.php';
                             break;
 
 

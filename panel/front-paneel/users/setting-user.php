@@ -59,7 +59,6 @@
     top: 30.5px;
     border-radius: 5px;
     box-shadow: inset 0 0 0px 0 rgb(33 33 33), 0 0px 20px 0 rgb(33 33 33);">
-
     <div class="alert alert-primary" role="alert" style="position: relative;
     bottom: 22px;
     height: 210px;

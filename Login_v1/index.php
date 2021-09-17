@@ -12,12 +12,13 @@ if (isset($_POST['submit'])){
     $res = $query->fetch(PDO::FETCH_OBJ);
     if ($res){
         if ($res->password == $password){
+            header("location:http://localhost/medico/panel/front-paneel/dashburd.php");
             $_SESSION['login'] = $username;
             /*if(isset($_POST['remeber'])) {
                 setcookie('username', $username, time() + (86400 * 30));
                 setcookie('passwoed', $password, time() + (86400 * 30));
             }*/
-            echo 'ورود شما موفقیت آمیز بود';
+            echo "لاگین با موفقیت انجام شد";
         }
         else{
             echo "<pre>کاربرگرامی:

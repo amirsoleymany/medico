@@ -48,6 +48,7 @@ include_once '../function/f-users.php';
                         <ul class="sub-users">
                             <li><a href="dashburd.php?page=setting-user">تنظیمات کاربران </a></li>
                             <li><a href="dashburd.php?page=config-access">پیکربندی دسترسی ها</a></li>
+                            <li><a href="dashburd.php?page=status-report">گزارش آخرین وضعیت</a></li>
                             <li><a href="#">مشاهده همه کاربران</a></li>
 
                         </ul>
