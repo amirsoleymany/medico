@@ -1,15 +1,16 @@
+<?php include_once '../function/jdf.php'; ?>
 <!doctype html>
 <html lang="en">
 <head>
     <title>انتخواب گزارش مورد نیاز</title>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
-
 <div>
     <form method="post" name="select">
     <div class="row">
         <div class="col-md-3mb-4">
-            <button type="submit" name="update" class="btn btn-dark">به روز رسانی گزارش</button>
+            <a class="btn btn-dark" href="http://localhost/medico/panel/front-paneel/dashburd.php?page=status-report" style="color: white;">به روز رسانی گزارش</a>
         </div>
 
         <div class="col-md-3mb-4">
@@ -28,7 +29,7 @@
         </div>
 
         <div class="col-md-3mb-4">
-            <button type="submit" class="btn btn-primary" name="print" style="position: relative;right: 294px;width: 236%;"> چاپ </button>
+            <button type="submit" class="btn btn-primary" name="print" style="position: relative;right: 294px;width: 236%;" onclick="window.print()"> چاپ </button>
         </div>
     </div>
 
@@ -36,15 +37,14 @@
         <div class="card text-dark bg-light mb-3" style="max-width: 18rem; position: relative;right: 79%;">
             <div class="card-body">
                 <h5 class="card-title">تاریخ امروز:</h5>
-                <p class="card-text"><?php ?></p>
+                <p class="card-text"><?php echo jdate('Y/n/j'); ?></p>
                 <hr>
-                <h6 class="card-text"><?php ?></h6>
+                <h5 class="card-title">ساعت امروز:</h5>
+                <p class="card-text"><?php echo jdate('H:i:s')?></p>
             </div>
         </div>
     </div>
     </form>
 </div>
-
-
 </body>
 </html>

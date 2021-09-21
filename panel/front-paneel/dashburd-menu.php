@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once '../function/f-users.php';
 ?>
 <!DOCTYPE HTML>
@@ -9,12 +10,18 @@ include_once '../function/f-users.php';
                 <div class="admin-menu" style="background:#212121; text-align: right;">
                     <ul>
                         <div class="userwel" style="border-bottom: 7px solid #abffd7;background: #000000;">
+                            <?php
+                            $session = $_SESSION['login_user'];
+                            $user_info = select_user_with_session($session);
+                            $user_permition = select_permition_url($user_info->permition);
+                            ?>
                           <img src="bootstrap/img/user.png">
+                            <p style="position:relative;bottom: 29px !important;"> <a style="   background: #212121;padding: 10px;font-size: 11px;border-radius: 7px;position: relative;top: 36px;"><?php echo $user_info-> fullname ?></a></p>
                             <p>سامانه پزشکی مدیکو</p>
                         </div>
 
                         <li class="dash">
-                            <a href="javascript:;">
+                            <a href="dashburd.php">
                                 <svg class="bi bi-gear-wide-connected" width="1em" height="1em" viewBox="0 0 20 20"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -49,6 +56,7 @@ include_once '../function/f-users.php';
                             <li><a href="dashburd.php?page=setting-user">تنظیمات کاربران </a></li>
                             <li><a href="dashburd.php?page=config-access">پیکربندی دسترسی ها</a></li>
                             <li><a href="dashburd.php?page=status-report">گزارش آخرین وضعیت</a></li>
+                            <li><a href="dashburd.php?page=log-login-user">گزارش ورود به سیستم</a></li>
                             <li><a href="#">مشاهده همه کاربران</a></li>
 
                         </ul>
@@ -201,9 +209,6 @@ include_once '../function/f-users.php';
                             <li><a href="#">ارتباط با پشتیبانی سیستم</a></li>
 
                         </ul>
-
-
-
                      </ul>
                 </div>
             </div>

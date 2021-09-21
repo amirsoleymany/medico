@@ -47,10 +47,14 @@ ob_start();
                             include_once 'users/status-report.php';
                             break;
 
-
+                        case 'log-login-user' :
+                            include_once 'users/log-login-user.php';
+                            break;
                     }
                 }
-
+                else{
+                    include_once 'counter.php';
+                }
                 ?>
                     </div>
                 </div>

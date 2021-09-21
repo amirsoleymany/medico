@@ -11,9 +11,10 @@ if (isset($_POST['submit'])){
     $query->execute();
     $res = $query->fetch(PDO::FETCH_OBJ);
     if ($res){
+       /* $pas=sha1($password);*/
         if ($res->password == $password){
             header("location:http://localhost/medico/panel/front-paneel/dashburd.php");
-            $_SESSION['login'] = $username;
+            $_SESSION['login_user'] = $username;
             /*if(isset($_POST['remeber'])) {
                 setcookie('username', $username, time() + (86400 * 30));
                 setcookie('passwoed', $password, time() + (86400 * 30));

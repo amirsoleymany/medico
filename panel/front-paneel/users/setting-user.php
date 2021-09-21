@@ -14,11 +14,9 @@
             font-size: 15px;
             transition: 0.4s;
         }
-
         .active, .accordion:hover {
             background-color: #ccc;
         }
-
         .accordion:after {
             content: '\254B';
             color: #777;
@@ -26,11 +24,9 @@
             float: right;
             margin-left: 5px;
         }
-
         .active:after {
             content: "\2212";
         }
-
         .panel {
             padding: 0 18px;
             background-color: white;
@@ -120,7 +116,7 @@
                                 <br><hr>
                                 <h6 style="text-align: center;background-color: aliceblue;padding: 14px;">گزارش تاریخچه ارسال فایل</h6>
 
-                            <?php include_once 'list-upload-file.php' ?>
+                                <?php include_once 'list-upload-file.php' ?>
                         </div>
 
                     </div>
@@ -149,6 +145,5 @@
         });
     }
 </script>
-
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 include_once 'dbconnect.php';
+include_once 'jdf.php';
 include_once 'function.php';
 function insert_info_user($info,$img){
     $mellicode=$info['mellicode'];$fullname = $info['fullname'];$fathername=$info['fathername'];$birthday=$info['birthday'];$degree=$info['degree'];$field=$info['field'];$phone=$info['phone'];$state=$info['state'];
@@ -111,12 +112,40 @@ function page_title($url) {
     return $title;
 }
 function insert_permition($title,$status,$page){
-    $code = unique_code(6);
+    $code =unique_code(6);
     $author = $_SESSION['login_user'];
     $date = date('Y/m/d');
     $result = array();
     $pdo=connect_db();
     $query=$pdo->prepare("INSERT INTO permition_tbl (code,name,permition,author,date,status) VALUES ('$code','$title','$page','$author','$date','$status')");
     $query->execute();
+}
+function list_upload_file(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM upload_file_tbl WHERE part = 'register_bulk_user'");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function nomber_users(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM users_tbl");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function status_online(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT status FROM users_tbl WHERE status = 'ON';");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function status_offline(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT status FROM users_tbl WHERE status = 'OFF';");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
 }
 ?>

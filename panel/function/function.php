@@ -12,7 +12,7 @@ function upload_pics($pic,$location){
 }
 function unique_code($limit)
 {
-    return substr(base_convert(sha1(uniqid(mt_rand())), 16, 362), 0, $limit);
+    return substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit);
 }
 function select_user_permition($username){
     $pdo=connect_db();

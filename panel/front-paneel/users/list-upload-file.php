@@ -1,7 +1,5 @@
-<?php
-if(strpos($select_permitions->permition,'list_upload_file.php') !==false):
-    ?>
-    <head>
+
+<head>
         <title>گزارش تاریخچه ارسال فایل</title>
     </head>
     <table class="table table-striped table-advance table-hover">
@@ -19,7 +17,7 @@ if(strpos($select_permitions->permition,'list_upload_file.php') !==false):
         </thead>
         <tbody>
         <?php
-        include_once '../functions/f-user.php';
+        include_once '../function/f-users.php';
         $files = list_upload_file();
         if(count($files) == 0):
             ?>
@@ -51,13 +49,5 @@ if(strpos($select_permitions->permition,'list_upload_file.php') !==false):
         </tbody>
 
     </table>
-<?php else:?>
-    <div class="alert alert-danger alert-dismissible fade show" style="line-height: 28px;" role="alert">
-        <strong>کاربر محترم!<br></strong> شما به بخش گزارش تاریخجه ارسال فایل دسترسی ندارید
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-<?php endif;?>
 
 

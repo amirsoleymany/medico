@@ -1,11 +1,10 @@
 <?php
 include_once '../function/f-users.php';
-include_once '../function/function.php';
 if(isset($_POST['send'])){
     if(isset($_FILES['excel']['name'])){
         $items = $_POST['item'];
         $xlsxfile = $_FILES['excel'];
-        $location = 'upload/bulk_user_register/';
+        $location ='upload/bulk-user-register/';
         $pdo = connect_db();
         include_once 'xlsx.php';
         if($pdo){
