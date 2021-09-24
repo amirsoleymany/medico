@@ -8,7 +8,7 @@
     <title>گزارش اخرین وضعیت</title>
 </head>
 <body>
-<div style="background: white;padding: 51px;box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 5px 0 rgb(0 0 0);">
+<div style="background: linear-gradient(0deg, #83b7d3, #f2fcfe);padding: 51px;box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 5px 0 rgb(0 0 0);">
 
 <?php include_once 'select-report.php';?>
         <hr>

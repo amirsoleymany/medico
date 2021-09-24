@@ -7,16 +7,16 @@ include_once '../function/f-users.php';
     <title>مدیرت پنل کاربری</title>
 </head>
             <div class="col-md-2">
-                <div class="admin-menu" style="background:#212121; text-align: right;">
+                <div class="admin-menu" style="text-align: right;background: linear-gradient(0deg, #000000b3, #000000);">
                     <ul>
-                        <div class="userwel" style="border-bottom: 7px solid #abffd7;background: #000000;">
+                        <div class="userwel" style="border-bottom:5px solid #8e55ea;background: #000000;">
                             <?php
                             $session = $_SESSION['login_user'];
                             $user_info = select_user_with_session($session);
                             $user_permition = select_permition_url($user_info->permition);
                             ?>
                           <img src="bootstrap/img/user.png">
-                            <p style="position:relative;bottom: 29px !important;"> <a style="   background: #212121;padding: 10px;font-size: 11px;border-radius: 7px;position: relative;top: 36px;"><?php echo $user_info-> fullname ?></a></p>
+                            <p style="position:relative;bottom: 29px !important;"> <a style="   background: #8e55ea;padding: 10px;font-size: 11px;border-radius: 7px;position: relative;top: 36px;"><?php echo $user_info-> fullname ?></a></p>
                             <p>سامانه پزشکی مدیکو</p>
                         </div>
 
@@ -34,7 +34,6 @@ include_once '../function/f-users.php';
 پیشخوان
                             </a>
                         </li>
-
 
                         <li class="users">
                             <a href="javascript:;">

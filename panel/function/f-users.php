@@ -46,32 +46,19 @@ function select_permition_url($id){
     $res=$query->fetch(PDO::FETCH_OBJ);
     return $res;
 }
+function select_permition_url1(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM permition_tbl");
+    $query->execute();
+    $res=$query->fetch(PDO::FETCH_OBJ);
+    return $res;
+}
 function select_user_with_session($session){
     $pdo=connect_db();
     $query=$pdo->prepare("SELECT * FROM users_tbl WHERE username= '$session'");
     $query->execute();
     $res=$query->fetch(PDO::FETCH_OBJ);
     return $res;
-}
-function login_user($user,$pass){
-    $pdo=connect_db();
-    $query=$pdo->prepare("SELECT * FROM users_tbl WHERE username='$user'");
-    $query->execute();
-    $res=$query->fetch(PDO::FETCH_OBJ);
-    if($res){
-        $pas=sha1($pass);
-        if($pas == $res->password ){
-            header("location:panel/front-paneel/dashboard.php");
-            $_SESSION['login_user'] = $res->username ;
-            echo "لاگین با موفقیت انجام شد";
-        }
-        else{
-            echo "رمز عبور اشتباه است";
-        }
-    }
-    else{
-        echo "نام کاربری اشتباه است";
-    }
 }
 function insert_info_file($items,$xlsxfile,$location)
 {
@@ -114,7 +101,7 @@ function page_title($url) {
 function insert_permition($title,$status,$page){
     $code =unique_code(6);
     $author = $_SESSION['login_user'];
-    $date = date('Y/m/d');
+    $date = jdate('Y/n/j');
     $result = array();
     $pdo=connect_db();
     $query=$pdo->prepare("INSERT INTO permition_tbl (code,name,permition,author,date,status) VALUES ('$code','$title','$page','$author','$date','$status')");
@@ -147,5 +134,46 @@ function status_offline(){
     $query->execute();
     $res=$query->fetchAll(PDO::FETCH_OBJ);
     return $res;
+}
+function nomber_permition(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM `permition_tbl`");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function status_permition(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM `permition_tbl` WHERE status='ON'");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function list_permition(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM permition_tbl ORDER BY id DESC ");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function list_access($id){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM permition_tbl WHERE id= '$id'");
+    $query->execute();
+    $res=$query->fetch(PDO::FETCH_OBJ);
+    return $res;
+}
+function list_name_permition($id){
+    $result = array();
+    $res = list_access($id);
+    $permitions = explode(',',$res->permition);
+    foreach ($permitions as $key=>$permition){
+        $pdo=connect_db();
+        $query=$pdo->prepare("SELECT * FROM name_page WHERE page = '$permition' ");
+        $query->execute();
+        $res1=$query->fetch(PDO::FETCH_OBJ);
+        $result[$key] = $res1-> name;
+    }
+    return $result;
 }
 ?>

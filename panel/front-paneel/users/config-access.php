@@ -1,15 +1,20 @@
 <?php
-session_start();
 include_once '../function/f-users.php';
 include_once '../function/function.php';
+if(isset($_GET['id_page'])){
+    $update = true;
+    $id = $_GET['id_page'];
+    $up_permition = select_permition_url(
+            $id);
+    $new_up_permition = explode(',',$up_permition->permition);
+}
 if (isset($_POST['send_access'])){
     $page= $_POST['page'];
     $new_permition=implode(',',$_POST['page']);
     $title=$_POST['title'];
     $status=$_POST['status'];
     insert_permition($title,$status,$new_permition);
-    $result = 'ok_made_access';
-    header("location:dashboard.php?page=config-access&op={$result}");
+    header("http://localhost/medico/panel/front-paneel/dashburd.php?page");
 }
 ?>
 <!doctype html>
@@ -28,13 +33,13 @@ if (isset($_POST['send_access'])){
 </head>
 <body>
 <br>
-<div style="background-color: #ffffff;width: 92%;position: relative;right: 3%;">
+<div>
     <form class="my-form" style=";padding: 51px;box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 0px 0 rgb(0 0 0);" method="post" enctype="multipart/form-data">
-        <div class="row" style="width: 133%;position: relative;left: 14%;">
+        <div class="row">
             <div class="col-md-1">
             </div>
             <div class="col-md-9" style="margin-right: 46px;">
-                <div class="alert alert-success" role="alert" style="color: #000000;background-color: #abffd7;border-color: #abffd7;">
+                <div class="alert alert-success" role="alert" style="color: #000000;background-color: #abffd7;border-color: #abffd7;width: 135%;position: relative;left: 18%;">
                     <h4 class="alert-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16" id="tools"><path d="M1 0L0 1l2.2 3.081a1 1 0 00.815.419h.07a1 1 0 01.708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 000 13a3 3 0 105.878-.851l2.654-2.617.968.968-.305.914a1 1 0 00.242 1.023l3.356 3.356a1 1 0 001.414 0l1.586-1.586a1 1 0 000-1.414l-3.356-3.356a1 1 0 00-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0016 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 00-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 01-.293-.707v-.071a1 1 0 00-.419-.814L1 0zm9.646 10.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"></path></svg>
                         پیکربندی دسترسی ها !</h4><br>
@@ -58,7 +63,7 @@ if (isset($_POST['send_access'])){
                         </svg> اگر نیاز به افزودن بیش از یک ابزارک دارید لطفا روی " + افزودن ابزارک " کلیک کنید. </p>
                 </div>
                 <hr>
-                <div style="box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 0px 0 rgb(0 0 0);background-color: rgb(33 33 33);padding: 41px;">
+                <div style="box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 0px 0 rgb(0 0 0);background-color: rgb(33 33 33);padding: 41px;width: 135%;position: relative;left: 18%;">
                     <h5 style="color: white;"> ایجاد مجوز دسترسی </h5><br>
                 <div class="row">
                     <div class="col-md-6">
@@ -107,11 +112,19 @@ if (isset($_POST['send_access'])){
                     </div>
                 </div>
                     <hr>
+
                     <input type="submit" name="send_access" value="ایجاد مجوز"  class="btn btn-primary btn-addmenue" style="margin-left: 5px;background: #abffd7;color: black;border-color: #abffd7;">
                     <br>
+
                 </div>
             </div>
+            <br>
+            <br>
         </div>
+        <br><hr>
+        <h5 style="text-align: center;background-color: #a0b8c9;padding: 15px;box-shadow: 0 0 20px 0 rgb(160 184 201), 0 5px 5px 0 rgb(95 107 116);"> لیست دسترسی ها</h5>
+        <br>
+        <?php include_once 'list-access.php'; ?>
      </div>
 </form>
 </body>

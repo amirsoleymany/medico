@@ -4,7 +4,7 @@
     <title>لیست گزارش ها</title>
 </head>
 <body>
-<table class="table table-striped table-advance table-hover">
+<table class="table table-dark table-striped">
     <thead>
     <tr>
         <th>ردیف</th>

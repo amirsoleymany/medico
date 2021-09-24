@@ -15,41 +15,47 @@ $offline=count($status_off)
 </head>
 <body>
 
-<div style="background-color: #f1f1f1;position: relative;border-radius: 7px;">
-    <form method="post" name="status">
-    <div class="row" style="padding: 10px;position: relative;">
-        <div class="card text-white bg-dark col-md-6" style="max-width: 18rem;position: relative;right: 21%;">
+<div class="row row-cols-1 row-cols-md-2 g-6">
+    <div class="col">
+        <div class="card text-white bg-dark h-100" style="display: flex;flex-direction: row-reverse;">
             <div class="card-body">
-                <h6 class="card-title">تعداد کل کاربران سامانه:</h6>
-                <p class="card-text"><?php echo $user; ?></p>
+                <h5 class="card-title">تعداد کل کاربران سامانه:</h5>
+                <p class="card-text"><?php echo "تعداد کاربران:"." ".$user; ?></p>
             </div>
         </div>
-
-        <div class="card text-white bg-dark col-md-6" style="max-width: 18rem;position: relative;right: 22%;">
+    </div>
+    <div class="col">
+        <div class="card text-white bg-dark h-100">
             <div class="card-body">
-                <h6 class="card-title">کاربران ثبت نامی جدید ۱ شبانه روز گذشته: </h6>
+                <h5 class="card-title">تعداد کاربران آنلاین:</h5>
+                <p class="card-text"><?php echo "کاربران آنلاین:"." ".$online; ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row row-cols-1 row-cols-md-2 g-6">
+    <div class="col">
+        <div class="card text-white bg-dark h-100">
+            <div class="card-body">
+                <h5 class="card-title">تعداد کاربران آفلاین:</h5>
+                <p class="card-text"><?php echo "کاربران آفلاین:"." ".$offline; ?></p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-white bg-dark h-100">
+            <div class="card-body">
+                <h5 class="card-title">کاربران ثبت نامی جدید | شبانه روز گدشته:</h5>
                 <p class="card-text"></p>
             </div>
         </div>
     </div>
-
-    <div class="row" style=padding:10px;position:relative;bottom:9px;">
-        <div class="card text-white bg-dark col-md-6" style="max-width: 18rem;position: relative;right: 21%;">
-            <div class="card-body">
-                <h6 class="card-title">تعداد کل کاربران آنلاین | سیستم:</h6>
-                <p class="card-text"><?php echo $online; ?></p>
-            </div>
-        </div>
-
-        <div class="card text-white bg-dark col-md-6" style="max-width: 18rem;position: relative;right: 22%;">
-            <div class="card-body">
-                <h6 class="card-title">تعداد کاربران آفلاین | سیستم: </h6>
-                <p class="card-text"><?php echo $offline; ?></p>
-            </div>
-        </div>
-    </div>
-    </form>
 </div>
+
+
+
+
 
 </body>
 </html>

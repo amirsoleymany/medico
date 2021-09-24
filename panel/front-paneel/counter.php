@@ -1,74 +1,123 @@
+<?php
+include_once '../function/f-users.php';
+include_once '../function/function.php';
+include_once '../function/jdf.php';
+$users=nomber_users();
+$user=count($users);
+$status_on=status_online();
+$online=count($status_on);
+$status_off=status_offline();
+$offline=count($status_off);
+$permition=nomber_permition();
+$nomber=count($permition);
+$permition_on=status_permition();
+$status=count($permition_on);
+?>
 <!doctype html>
 <html lang="fa">
 <head>
+    <style>
+        #header{
+            background: #7100ff;
+            border-radius: 20px 0%;
+            top: 6px;
+            position: relative;
+        }
+        #header_1{
+            background: #ff5555;
+            border-radius: 0% 20px;
+            top: 6px;
+            position: relative;
+        }
+        .btn-light{
+            font-size: 12px;
+        }
+        .btn-dark{
+            font-size: 12px;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap/css/dard-style.css">
     <title>پیشخوان</title>
 </head>
 <body>
-<div style="background: #262626;padding: 51px;">
-    <div class="main-part">
-        <div class="cpanel cpanel-skyblue">
-            <div class="icon-part">
-                <i class="fa fa-users" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                        <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"></path>
-                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path>
-                    </svg></i><br>
-                <small>تعداد کاربران سامانه</small>
-                <p>985</p>
-            </div>
-            <div class="card-content-part">
-                <a href="#">More Details </a>
+<div style="background: #212121;;padding: 10%;">
+    <div class="row">
+        <div class="card text-white bg-dark col-md-4" style="max-width: 18rem;margin: auto;text-align: center;">
+            <div class="card-header" id="header">تعداد کاربران | سامانه</div>
+            <div class="card-body">
+                <h5 class="card-title">کاربران سامانه:</h5>
+                <p class="card-text"><?php echo $user; ?></p>
+                <a href="http://localhost/medico/panel/front-paneel/dashburd.php?page=setting-user" class="btn btn-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+                    </svg>
+                    ایجاد حساب کاربری</a>
             </div>
         </div>
-        <div class="cpanel cpanel-green">
-            <div class="icon-part">
-                <i class="fa fa-money" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
-                    </svg></i><br>
-                <small> حساب کاربری</small>
-                <p>qdwe </p>
-            </div>
-            <div class="card-content-part">
-                <a href="http://localhost/medico/panel/front-paneel/dashburd.php?page=setting-user">ایجاد حساب کاربری</a>
-            </div>
-        </div>
-        <div class="cpanel cpanel-orange">
-            <div class="icon-part">
-                <i class="fa fa-bell" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"></path>
-                    </svg></i><br>
-                <small>تعداد مجوز دسترسی های ساماته</small>
-                <p>11 New</p>
-            </div>
-            <div class="card-content-part">
-                <a href="#">More Details </a>
+
+        <div class="card text-white bg-dark col-md-4" style="max-width: 18rem;margin: auto;text-align: center;">
+            <div class="card-header" id="header">تعداد کاربران آنلاین | سامانه</div>
+            <div class="card-body">
+                <h5 class="card-title">کاربران آنلاین:</h5>
+                <p class="card-text"><?php echo $online; ?></p>
+                <a href="http://localhost/medico/panel/front-paneel/dashburd.php?page=status-report" class="btn btn-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+                    </svg>
+                    مشاهده گزارش کاربران آنلاین</a>
             </div>
         </div>
-        <div class="cpanel cpanel-blue">
-            <div class="icon-part">
-                <i class="fa fa-tasks" aria-hidden="true"></i><br>
-                <small>Task</small>
-                <p>85</p>
-            </div>
-            <div class="card-content-part">
-                <a href="#">More Details </a>
+
+        <div class="card text-white bg-dark col-md-4" style="max-width: 18rem;margin: auto;text-align: center;">
+            <div class="card-header" id="header">تعداد کاربران آفلاین | سامانه</div>
+            <div class="card-body">
+                <h5 class="card-title">کاربران آفلاین:</h5>
+                <p class="card-text"><?php echo  $offline; ?></p>
+                <a href="http://localhost/medico/panel/front-paneel/dashburd.php?page=status-report" class="btn btn-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+                    </svg>
+                    مشاهده گزارش کاربران آفلاین</a>
             </div>
         </div>
-        <div class="cpanel cpanel-red">
-            <div class="icon-part">
-                <i class="fa fa-tasks" aria-hidden="true"></i><br>
-                <small>Task</small>
-                <p>85</p>
+    </div>
+    <div class="row" style="position: relative;top: 7px;">
+        <div class="card text-white bg-secondary col-md-4" style="max-width: 18rem;margin: auto;text-align: center;">
+            <div class="card-header" id="header_1" style="background: #1ed585; border-radius: 25px 0px 25px 25px;">تاریخ و ساعت | سامانه</div>
+            <div class="card-body">
+                <h5 class="card-title">تاریخ و ساعت:</h5>
+                <p class="card-text"><?php echo "تاریخ:"." ".jdate('Y/n/j'); ?></p>
+                <hr>
+                <p class="card-text"><?php echo "ساعت:"." ".jdate('H:i:s'); ?></p>
             </div>
-            <div class="card-content-part">
-                <a href="#">More Details </a>
+        </div>
+
+        <div class="card text-dark bg-light col-md-4" style="max-width: 18rem;margin: auto;text-align: center;">
+            <div class="card-header" id="header_1">مجوز دسترسی | سامانه</div>
+            <div class="card-body">
+                <h5 class="card-title">تعداد مجوز ها: </h5>
+                <p class="card-text"><?php echo $nomber; ?></p>
+                <a href="http://localhost/medico/panel/front-paneel/dashburd.php?page=config-access" class="btn btn-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+                    </svg>
+                    ایجاد مجوز دسترسی</a>
+            </div>
+        </div>
+
+        <div class="card text-dark bg-light col-md-4" style="max-width: 18rem;margin: auto;text-align: center;">
+            <div class="card-header" id="header_1">مجوز های فعال | سیستم</div>
+            <div class="card-body">
+                <h5 class="card-title">تعداد مجوز های فعال:</h5>
+                <p class="card-text"><?php echo $status ;?></p>
+                <a href="http://localhost/medico/panel/front-paneel/dashburd.php?page=config-access" class="btn btn-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+                    </svg>
+                    ایجاد مجوز دسترسی</a>
             </div>
         </div>
     </div>
