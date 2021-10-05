@@ -5,23 +5,24 @@ include_once '../function/f-users.php';
 <!DOCTYPE HTML>
 <head>
     <title>مدیرت پنل کاربری</title>
+    <link rel="">
 </head>
             <div class="col-md-2">
-                <div class="admin-menu" style="text-align: right;background: linear-gradient(0deg, #000000b3, #000000);">
+                <div class="admin-menu" style="text-align: right;box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 0px 0 rgb(0 0 0);background-color: rgb(241 241 241);">
                     <ul>
-                        <div class="userwel" style="border-bottom:5px solid #8e55ea;background: #000000;">
+                        <div class="userwel" style="border-bottom: 0px solid #ffffff;background: #ffffff;box-shadow: inset 0px 0px 20px 0 rgb(255 255 255), 0px 4px 10px 0 rgb(0 0 0);">
                             <?php
                             $session = $_SESSION['login_user'];
                             $user_info = select_user_with_session($session);
                             $user_permition = select_permition_url($user_info->permition);
                             ?>
-                          <img src="bootstrap/img/user.png">
-                            <p style="position:relative;bottom: 29px !important;"> <a style="   background: #8e55ea;padding: 10px;font-size: 11px;border-radius: 7px;position: relative;top: 36px;"><?php echo $user_info-> fullname ?></a></p>
-                            <p>سامانه پزشکی مدیکو</p>
+                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkWCEGpuakGVhwczoA5D93q1m3iUQ4vaYAc07uvcvBJfAzAT9XBQzlg_l47jY03KG5xvQ&amp;usqp=CAU">
+                            <p style="position:relative;bottom: 29px !important;"> <a style="background: #f1f1f1;padding: 6px;font-size: 13px;border-radius: 45px;position: relative;top: 36px;color: black;"><?php echo $user_info-> fullname." "."|"." ";  ?></a></p>
+                            <p></p>
                         </div>
 
-                        <li class="dash">
-                            <a href="dashburd.php">
+                        <li class="dash" >
+                            <a href="dashboard.php" style="color: #000000;font-size: 25px;" >
                                 <svg class="bi bi-gear-wide-connected" width="1em" height="1em" viewBox="0 0 20 20"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -36,7 +37,7 @@ include_once '../function/f-users.php';
                         </li>
 
                         <li class="users">
-                            <a href="javascript:;">
+                            <a href="javascript:;"style="color: #000000;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
                                 </svg>
@@ -51,19 +52,18 @@ include_once '../function/f-users.php';
                             </span>
                             </a>
                         </li>
-                        <ul class="sub-users">
-                            <li><a href="dashburd.php?page=setting-user">تنظیمات کاربران </a></li>
-                            <li><a href="dashburd.php?page=config-access">پیکربندی دسترسی ها</a></li>
-                            <li><a href="dashburd.php?page=status-report">گزارش آخرین وضعیت</a></li>
-                            <li><a href="dashburd.php?page=log-login-user">گزارش ورود به سیستم</a></li>
-                            <li><a href="#">مشاهده همه کاربران</a></li>
+                        <ul class="sub-users"style="color: #000000;">
+                            <li><a href="dashboard.php?page=setting-user">تنظیمات کاربران </a></li>
+                            <li><a href="dashboard.php?page=config-access">پیکربندی دسترسی ها</a></li>
+                            <li><a href="dashboard.php?page=status-report">گزارش آخرین وضعیت</a></li>
+                            <li><a href="dashboard.php?page=log-login-user">گزارش ورود به سیستم</a></li>
+                            <li><a href="dashboard.php?page=example_client">مشاهده همه کاربران</a></li>
 
                         </ul>
 
 
-
                         <li class="staff">
-                            <a href="javascript:;">
+                            <a href="javascript:;"style="color: #000000;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                                     <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
                                 </svg>
@@ -89,7 +89,7 @@ include_once '../function/f-users.php';
 
 
                         <li class="patients">
-                            <a href="javascript:;">
+                            <a href="javascript:;"style="color: #000000;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                                     <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
                                 </svg>
@@ -125,7 +125,7 @@ include_once '../function/f-users.php';
 
 
                         <li class="accounting">
-                            <a href="javascript:;">
+                            <a href="javascript:;"style="color: #000000;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
                                     <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"></path>
                                 </svg>
@@ -158,12 +158,12 @@ include_once '../function/f-users.php';
 
 
                         <li class="records">
-                            <a href="javascript:;">
+                            <a href="javascript:;"style="color: #000000;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
                                     <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
                                     <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
                                 </svg>
-مدیریت سوابق
+مدیریت دسته ها
 <span style="float: left;">
                                 <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 20 20"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -175,14 +175,14 @@ include_once '../function/f-users.php';
                             </a>
                         </li>
                         <ul class="sub-records">
-                            <li><a href="#">همه نوشته ها</a></li>
-                            <li><a href="#">افزودن نوشته</a></li>
+                            <li><a href="dashboard.?page=list-category">مشاهده دسته بندی</a></li>
+                            <li><a href="dashboard.php?page=new-category">افزودن دسته جدید</a></li>
 
                         </ul>
 
 
                         <li class="connections">
-                            <a href="javascript:;">
+                            <a href="javascript:;"style="color: #000000;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-chat-text" viewBox="0 0 16 16">
                                     <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"></path>
                                     <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8zm0 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"></path>

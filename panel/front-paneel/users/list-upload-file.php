@@ -2,7 +2,7 @@
 <head>
         <title>گزارش تاریخچه ارسال فایل</title>
     </head>
-    <table class="table table-striped table-advance table-hover">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>ردیف</th>

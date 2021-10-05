@@ -60,8 +60,7 @@ function select_user_with_session($session){
     $res=$query->fetch(PDO::FETCH_OBJ);
     return $res;
 }
-function insert_info_file($items,$xlsxfile,$location)
-{
+function insert_info_file($items,$xlsxfile,$location){
     $new_location = upload_pics($xlsxfile, $location);
     $title = $items['title'];
     $description = $items['description'];
@@ -172,8 +171,81 @@ function list_name_permition($id){
         $query=$pdo->prepare("SELECT * FROM name_page WHERE page = '$permition' ");
         $query->execute();
         $res1=$query->fetch(PDO::FETCH_OBJ);
-        $result[$key] = $res1-> name;
+        $result[$key] = $res1->name;
     }
     return $result;
+}
+function update_permition($id,$title,$status,$page){
+    $author = $_SESSION['login_user'];
+    $date = date('Y/m/d');
+    $pdo=connect_db();
+    $query=$pdo->prepare("UPDATE permition_tbl SET name = '$title',permition = '$page', author = '$author' , date = '$date' , status = '$status' WHERE id='$id'");
+    $query->execute();
+}
+function select_bulk_user(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM users_tbl ");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function select_permition_name(){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM permition_tbl WHERE status = 'on'");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function search_with_permition($id_permition){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM users_tbl WHERE permition = '$id_permition' ");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function show_permition_name($user_permition){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM permition_tbl WHERE id = '$user_permition'");
+    $query->execute();
+    $res=$query->fetch(PDO::FETCH_OBJ);
+    return $res;
+}
+function delete_info_user($id){
+    $pdo=connect_db();
+    $query=$pdo->prepare("DELETE FROM users_tbl WHERE id = '$id'");
+    $query->execute();
+}
+function update_info_user($id,$info,$img){
+    $mellicode=$info['mellicode'];$fullname = $info['fullname'];$fathername=$info['fathername'];$birthday=$info['birthday'];$degree=$info['degree'];$field=$info['field'];$phone=$info['phone'];$state=$info['state'];
+    $city=$info['city'];$email=$info['email'];$linkedin=$info['linkedin'];$instagram=$info['instagram'];$telegram=$info['telegram'];$life_address=$info['life_address'];$office_address=$info['office_address'];$top_skill=$info['top_skill'];$desc_skill=$info['desc_skill'];
+    $permition=$info['permition'];$author=$_SESSION['login_user'];$date_register=date('Y/m/d');$status=$info['status'];
+    $new_state = select_state_by_id($state);
+    $name_state = $new_state->name;
+    $last_info = select_user_info($id);
+    if(!$img['name'] == ""){
+        $main_dir = "../img/users/$fullname";
+        mkdir($main_dir);
+        unlink($last_info->img);
+        $dir_pics = upload_pics($img,"../img/users/$fullname/");
+    }
+    else{
+        $dir_pics = $last_info->img;
+    }
+    $password = sha1($mellicode);
+    $pdo=connect_db();
+    $query=$pdo->prepare("UPDATE users_tbl SET username = '$email', password = '$password', mellicode = '$mellicode', fullname = '$fullname', fathername = '$fathername', birthday = '$birthday', degree = '$degree', field = '$field', phone = '$phone', state = '$name_state', city = '$city', email = '$email', likedin = '$linkedin', instagram = '$instagram', telegram = '$telegram', life_address = '$life_address', office_address = '$office_address', top_skill = '$top_skill', desc_skill = '$desc_skill', img = '$dir_pics', permition = '$permition', author = '$author', date_register = '$date_register', status = '$status' WHERE id = '$id'" );
+    $query->execute();
+}
+function select_serch_info($info){
+    $pdo=connect_db();
+    $query=$pdo->prepare("SELECT * FROM users_tbl WHERE fullname LIKE '%$info%' OR mellicode LIKE '%$info%' ");
+    $query->execute();
+    $res=$query->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+function delete_access($id){
+    $pdo=connect_db();
+    $query = $pdo->prepare("DELETE FROM  permition_tbl WHERE  id = '$id'");
+    $query->execute();
 }
 ?>

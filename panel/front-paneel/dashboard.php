@@ -16,8 +16,8 @@ ob_start();
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12" style="text-align: right;">
-                <a class="btn btn-primary" href="#" style="background-color: #212121;border-color: #212121;">نمایش سایت</a>
-                <a class="btn btn-danger" href="#" style="background-color: #abffd7;border-color: #abffd7;">خروج</a>
+                <a class="btn btn-primary" href="#">نمایش سایت</a>
+                <a class="btn btn-danger" href="#">خروج</a>
 
             </div>
         </div>
@@ -49,6 +49,30 @@ ob_start();
 
                         case 'log-login-user' :
                             include_once 'users/log-login-user.php';
+                            break;
+
+                        case 'example_client' :
+                            include_once 'users/example_client.php';
+                            break;
+
+                        case 'edit_info_user' :
+                            include_once 'users/edit_info_user.php';
+                            break;
+
+                        case 'new-category' :
+                            include_once 'categorys/new-category.php';
+                            break;
+
+                        case 'list-category' :
+                            include_once 'categorys/list-category.php';
+                            break;
+
+                        case 'delete-category' :
+                            include_once 'categorys/delete-category.php';
+                            break;
+
+                        case 'edit-category' :
+                            include_once 'categorys/edit-category.php';
                             break;
                     }
                 }

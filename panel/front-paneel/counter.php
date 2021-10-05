@@ -43,7 +43,7 @@ $status=count($permition_on);
     <title>پیشخوان</title>
 </head>
 <body>
-<div style="background: #212121;;padding: 10%;">
+<div style="box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 0px 0 rgb(0 0 0);background-color: rgb(241 241 241);padding: 10%;">
     <div class="row">
         <div class="card text-white bg-dark col-md-4" style="max-width: 18rem;margin: auto;text-align: center;">
             <div class="card-header" id="header">تعداد کاربران | سامانه</div>

@@ -786,7 +786,7 @@ textarea.input2 + .focus-input2::after {
 .admin-menu {
     float: right;
     width: 100%;
-    background: #1f0d37;
+    background: #efefef;
     padding-bottom: 50px;
     height: 100%;
 }
@@ -794,13 +794,13 @@ textarea.input2 + .focus-input2::after {
 
 }
 .admin-menu ul li a:hover {
-    background: #32373c;
+    background: #6c757d;
 }
 .admin-menu ul li a:active {
-    background: #0073aa;
+    background: #ffffff;
 }
 .admin-menu ul li a {
-    color: #d6dbe1;
+    color: #ffffff;
     padding: 15px;
     display: block;
 }

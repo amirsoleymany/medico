@@ -1,12 +1,7 @@
-<?php
-include_once '../function/f-users.php';
-
-
-?>
 <head>
-    <title>لیست مجوز دسترسی ها</title>
+    <title>مشاهده لیست مجوزها</title>
 </head>
-<table class="table table-dark table-striped">
+<table class="table table-striped">
     <thead>
     <tr>
         <th>ردیف</th>
@@ -22,6 +17,7 @@ include_once '../function/f-users.php';
     </thead>
     <tbody>
     <?php
+    include_once '../function/f-users.php';
     $access = list_permition();
     if(count($access) == 0):
         ?>
@@ -40,24 +36,16 @@ include_once '../function/f-users.php';
         <tr>
             <td><?php echo $key+1; ?></td>
             <td><button type="button" class="btn btn-outline-dark" ><?php echo $val->code ?></button></td>
-            <td><button type="button" class="btn btn-info" ><?php echo $val->name ?></button></td>
+            <td><button type="button" class="btn btn-secondary" ><?php echo $val->name ?></button></td>
             <td><?php echo $val->author ?></td>
             <td><?php echo $val->date ?></td>
             <td>
                 <?php
-                $result = array();
-                var_dump($val->id);die();
-                $res = list_access($val->id);
-                $permitions = explode(',',$res->permition);
-                foreach ($permitions as $key=>$permition){
-                    $pdo=connect_db();
-                    $query=$pdo->prepare("SELECT * FROM name_page WHERE page ='$permition'");
-                    $query->execute();
-                    $ali=$query->fetch(PDO::FETCH_OBJ);
-                    $result[$key] = $ali->name;
-                        var_dump($result);
-                }
-                ?>
+                $res1 = list_name_permition($val->id);
+                foreach ($res1 as $key=>$resu):
+                    ?>
+                    <button type="button" class="btn btn-outline-secondary" ><?php echo $resu; ?></button>
+                <?php endforeach; ?>
             </td>
             <td>
                 <?php
@@ -71,7 +59,7 @@ include_once '../function/f-users.php';
                     <a class="btn btn-danger btn-addmenue" style="color: #FFFFFF; float: right;">غیرفعال|سیستم</a>
                 <?php endif; ?>
             </td>
-            <td><a href="dashboard.php?page=config-access&id_page=<?php echo $val->id; ?>" class="btn btn-primary btn-xs">
+            <td><a href="dashboard.php?page=config-access&id_page=<?php echo $val->id; ?>"  class="btn btn-primary btn-xs">
                     <svg class="bi bi-pencil" width="1.2em" height="1.2em"
                          viewBox="0 0 16 16" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +70,7 @@ include_once '../function/f-users.php';
                               d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z"
                               clip-rule="evenodd"></path>
                     </svg>
+
             </td>
             <td><a href="dashboard.php?page=delete-access&id=<?php echo $val->id; ?>" class="btn btn-danger btn-xs">
                     <svg class="bi bi-trash" width="1.2em" height="1.2em"
