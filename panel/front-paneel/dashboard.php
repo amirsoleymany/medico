@@ -4,6 +4,13 @@ ob_start();
 <!DOCTYPE html>
 <html lang="fa_IR">
 <head>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
     <meta charset="UTF-8">
     <title>داشبورد</title>
 
@@ -16,8 +23,8 @@ ob_start();
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12" style="text-align: right;">
-                <a class="btn btn-primary" href="#">نمایش سایت</a>
-                <a class="btn btn-danger" href="#">خروج</a>
+                <a class="btn btn-primary" href="../../fr-html/index.php">نمایش سایت</a>
+                <a class="btn btn-danger" href="../function/logout.php">خروج</a>
 
             </div>
         </div>
@@ -73,6 +80,22 @@ ob_start();
 
                         case 'edit-category' :
                             include_once 'categorys/edit-category.php';
+                            break;
+
+                        case 'add-article' :
+                            include_once 'article/add-article.php';
+                            break;
+
+                        case 'list_article' :
+                            include_once 'article/list-article.php';
+                            break;
+
+                        case 'edit-article' :
+                            include_once 'article/edit-article.php';
+                            break;
+
+                        case 'delete-article' :
+                            include_once 'article/delete-article.php';
                             break;
                     }
                 }

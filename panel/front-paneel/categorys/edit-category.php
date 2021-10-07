@@ -4,10 +4,10 @@ $id=$_GET['id'];
 if(isset($_POST['update'])){
     $info = $_POST['info'];
     update_category($id,$info);
-    header("location: dashboard.php?pages=list-category");
+    header("location:dashboard.php?pages=list-category");
 }
 if(isset($_POST['back'])){
-    header("location: dashboard.php?pages=list-category");
+    header("location:dashboard.php?pages=list-category");
 }
 $current_cat = edit_category($id);
 foreach ($current_cat as $cat) : ?>
