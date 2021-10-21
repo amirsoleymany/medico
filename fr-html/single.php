@@ -1,3 +1,8 @@
+<?php
+include_once '../panel/function/f-article.php';
+$id_article=$_GET['id'];
+$submit_ok =false;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,25 +26,35 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
-
+            <?php
+            $article = single_article($id_article)
+            ?>
             <div class="post-single">
-                <div class="post-title-single"><h1>دوره آموزش صفرتاصد php مناسب بازارکار</h1>
+                <div class="post-title-single"><h1><?php echo $article->title; ?></h1>
                     <div class="clearfix"></div>
                     <div class="entry-meta">
                         <div class="view">
                             دسته بندی :
                             <ul class="post-categories">
-                                <li><a href="" rel="category tag"></a></li>
+                                <li>
+                                    <a href="" rel="category tag">
+                                        <?php
+                                        $cat=category_article($article->cat_id);
+                                        foreach ($cat as $item) {
+                                            echo $item->title . " " . "|" . " ";
+                                        }
+                                        ?>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 
                         <div class="view"><i class="fa fa-comment"></i>
-                            منتشر شده در :
+                             منتشر شده در :<?php echo $article->date ?>
                         </div>
-                        <div class="view"><i class="fa fa-user"></i><span> نویسنده : </span>
+                        <div class="view"><i class="fa fa-user"></i><span>نویسنده :<?php echo $article->author; ?></span>
                         </div>
-                        <div class="view"><i class="fa fa-user"></i><span> آیدی مقاله : </span>
+                        <div class="view"><i class="fa fa-user"></i><span> آیدی مقاله : <?php echo $article->code_article; ?></span>
                         </div>
                     </div>
 
@@ -47,58 +62,60 @@
 
 
                 <div class="clearfix"></div>
-                <div class="thumb-single-product"><img src="img/default.jpg" class="attachment-medium size-medium wp-post-image" alt=""></div>
+                <div class="thumb-single-product">
+                    <img style="max-width: 96%;margin-bottom: 20px;" src="
+                    <?php
+                    $img = explode('/',$article->img);
+                    $img_name = end($img);
+                    $img_new_address = 'http://localhost/medico/panel/img/'."$img_name";
+                    echo $img_new_address;
+                    ?>
+                    " class="attachment-medium size-medium wp-post-image" alt=""></div>
 
                 <div class="post-txt-single">
                     <p>
-
-                        آموزش طراحی سایت با bootstrap
-                        <br>
-                        “سرعت بخشیدن کار” – “عدم محدودیت در استفاده از المان های جی کوئری” – “صرفه جویی در وقت و انرژی”
-                        – “طراحی ریسپانسیو استاندارد بدون حرف و حدیث” – “ارتقاء سطح فنی شما” و… امتیازات مثبتی هستند که
-                        با یادگیری بوت استرپ نصیب شما میشود. بنابراین طراحی سایت با بوت استرپ قطعا یکی از لذت بخش ترین
-                        طراحی های شما خواهد
-                        <br>
-                        <br>
-                        چرا باید بوت استرپ را یادبگیرید؟
-                        <br>
-                        تصور کنید برای طراحی یک سایت ریسپانسیو که نیاز به المان هایی مثل (اسلایدر – تب منو – مدال باکس –
-                        آکاردئونی – منوزیرمنو – پروگرس بار و… ) تنها یک روز فرصت داشته باشید در غیر اینصورت مشتری را از
-                        دست میدهید چه میکنید؟
-                        <br><br><br><br>
-                        بهترین راه استفاده از فریم ورک محبوب بوت استرپ هست تا بتوانید زیباترین سایت ریسپانسیو را در کمتر
-                        از یک روز بدون هیچ دغدغه و نگرانی طراحی کنید.
-                        در ابتدای فیلم آموزش بوت استرپ به معرفی، روال کار و نحوه عملکرد بوت استرپ در طراحی ریسپانسیو
-                        میپردازیم و با مفهوم گرید بندی بوت استرپ بصورت کامل آشنا میشوید
-                        <br><br>
-                        سپس به سراغ کلاس ها و کامپوننت های جاوااسکریپت مثل اسلایدر – تب منو – منودراپ دون – مودال باکس –
-                        پروگرس بار – منوآکاردئونی – دکمه های مختلف – لیبل و … میرویم و نحوه استفاده از هریک را بصورت
-                        تمرین عملی میاموزیم.
-                        <br><br>
-                        پس از تسلط و درک کامل از نحوه کار با بوت استرپ ، فاز بعدی آموزش را آغاز میکنیم و یک سایت شرکتی
-                        زیبا و مدرن با بوت استرپ بصورت پروژه محور طراحی میکنیم.
-
-
+                        <?php
+                         echo $article->text;
+                        ?>
                     </p>
                 </div>
             </div>
+                <?php if (!isset($_SESSION['login_user'])) : ?>
+                    <div class="row col-md-12">
+                        <div class="comment col-md-1">
 
+                        </div>
+                        <form method="post" class="col-md-8">
+                            <?php
+                            if ($submit_ok !== true) :
+                                ?>
+                                <div>
+                                    <textarea class="form-control" placeholder="متن نظر شما" id="floatingTextarea2" name="text_comment" rows="9"></textarea>
+                                    <input type="submit" class="btn btn-secondary" value="ثبت نظر" name="submit_comment">
+                                </div>
+                            <?php else: ?>
+                            <br>
+                            <div class="alert alert-success" role="alert">
+                                نظر شما ثبت شد و در صورت تایید مدیر ثبت خواهد شد .
+                            </div>
+                        </form>
+                        <?php endif; ?>
+                    </div>
+                <?php else: ?>
             <div class="box-comment">
                 <h3>نظر خود را در رابطه با این مقاله وارد کنید</h3>
                 <h3>برای ثبت نظر ابتدا باید
-                    <a class="btn btn-warning" href="#">وارد شوید</a>
+                    <a class="btn btn-warning" href="login.php">وارد شوید</a>
                     یا
-                    <a class="btn btn-primary" href="#"> ثبت نام کنید </a>
+                    <a class="btn btn-primary" href="register.php"> ثبت نام کنید </a>
                     کنید
                 </h3>
-
-                <?php
-
-
-            ?>
+                <?php endif; ?>
 
 
-                <div class="comment">
+
+
+                <!--<div class="comment">
                     <img src="img/user.png">
                     <h5>رضاحیدری</h5>
                     <p>متن کامنت</p>
@@ -115,7 +132,7 @@
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <input type="hidden" name="user_name" value="{{Auth::user()->name}}">
                     <input type="submit" class="btn btn-success" value="ثبت نظر">
-                </form>
+                </form>-->
             </div>
         </div>
     </div>

@@ -1,4 +1,6 @@
-
+<head>
+    <title>لیست کاربران</title>
+</head>
 <div style="box-shadow: 0 0 20px 0 rgb(66 55 55), 0 5px 5px 0 rgb(0 0 0);padding: 50px;">
 <table class="table table-striped table-advance table-hover">
     <thead>
@@ -9,14 +11,14 @@
         <th>نام کاربری</th>
         <th>تلفن تماس</th>
         <th>شروع فعالیت</th>
-        <th>دسترسی</th>
+        <!--<th>دسترسی</th>-->
         <th>وضعیت</th>
         <th>جزئیات|ویرایش</th>
     </tr>
     </thead>
     <tbody>
     <?php
-    include_once '../functions/f-user.php';
+    include_once '../function/f-users.php';
     $users = select_bulk_user();
     if(count($users) == 0):
         ?>
@@ -38,15 +40,15 @@
             <td><p style="margin-top: 40px;"><?php echo $user->username ?></p></td>
             <td><p style="margin-top: 40px;"><?php echo $user->phone ?></p></td>
             <td><p style="margin-top: 40px;"><?php echo $user->date_register ?></p></td>
-            <td>
+            <!--<td>
                 <p style="margin-top: 40px;">
                     <?php
-                    $permition_name = show_permition_name($user->permition);
+/*                    $permition_name = show_permition_name($user->permition);
                     echo $permition_name->name;
-                    ?>
+                    */?>
                 </p>
 
-            </td>
+            </td>-->
 
             <td>
                 <?php

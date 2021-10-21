@@ -1,3 +1,8 @@
+<?php
+include_once '../panel/function/f-slider.php';
+include_once '../panel/function/function.php';
+$i=0
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,22 +23,20 @@
 <div class="main">
     <div class="main-slider">
         <div class="owl-carousel owl-theme">
+            <?php
+            $slider = show_slider();
+            foreach ($slider as $slide) :
+            ?>
             <div class="item">
-                <a target="_blank" href="#"><img src="img/slide1.jpg" alt="bootstrap course"/></a>
-                <span><a href="#">بهترین زبان برنامه نویسی برای طراحی وبسایت</a> </span>
+                <a target="_blank" href="#"><img src="<?php
+                    $slider_dir = explode('/',$slide->dir);
+                    $slider_name = end($slider_dir);
+                    $img_new_address = 'http://localhost/medico/panel/img/slider'.'/'."$slider_dir[3]".'/'."$slider_name";
+                    echo $img_new_address;
+                ?>" alt="bootstrap course"/>
+                <!--</a> <span><a href="#">بهترین زبان برنامه نویسی برای طراحی وبسایت</a> </span>-->
             </div>
-            <div class="item">
-                <a target="_blank" href="#"><img src="img/slide2.jpg"/></a>
-                <span><a href="#">نقشه راه برنامه نویس شدن اینجاست</a> </span>
-            </div>
-            <div class="item">
-                <a target="_blank" href="#"><img src="img/slide3.jpg" alt="websoft3"/></a>
-                <span><a href="#">دوره آموزش صفرتاصد php در وبسافت3</a> </span>
-            </div>
-            <div class="item">
-                <a target="_blank" href="#"><img src="img/slide4.jpg" alt="websoft3"/></a>
-                <span><a href="#">چگونه به یک برنامه نویس حرفه ای تبدیل شویم؟</a> </span>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
@@ -120,173 +123,56 @@
 
 
 <div class="title-main">
-    <h4>آخرین مطالب آموزشی</h4>
+    <h4>آخرین مطالب </h4>
 </div>
 
 <div class="container-fluid post-container">
     <div class="row">
         <div class="col-md-12">
             <div class="container">
+                <?php
+                include_once '../panel/function/f-article.php';
+                $all_article=list_article();
+                foreach ($all_article as $article) :
+                if ($article->status == 'publish') :
+                $i++;
+                if ($i<=4) :
+                ?>
                 <article class="post">
+                    <a target="_blank" href="single.php?id=<?php echo $article->id ?>" dideo-checked="true">
                     <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
+                        <img src="
+                        <?php
+                        $img = explode('/',$article->img);
+                        $img_name = end($img);
+                        $img_new_address = 'http://localhost/medico/panel/img/'."$img_name";
+                        echo $img_new_address;
+                        ?>
+                        " width="260" height="150">
                     </div>
                     <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">آموزش برنامه نویسی php</a></h2>
+                        <h2><?php echo $article->title?></h2>
                     </div>
                     <div class="clearfix"></div>
                     <div class="post-txt">
-                        <h4>اگر با وردپرس کار می کنید و سایت وردپرسی دارید حتما باید با ساختار اولیه فایل ها و پوشه های
-                            ...</h4>
+                        <h4>
+                            <?php
+                            $text=limit_text_article($article->text,30)."...";
+                            echo $text;
+                            ?>
+                        </h4>
                     </div>
                     <div class="post-foot-container">
                         <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
+                        <div class="p-c-view"><i class="fa fa-eye"></i><?php echo $article->date;?></div>
                         <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
+                        <div class="p-c-view"><i class="fa fa-comment"></i><?php echo $article->author;?></div>
                     </div>
+                    </a>
                 </article>
-                <article class="post">
-                    <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
-                    </div>
-                    <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">معرفی ساختار فایل ها و پوشه های
-                            وردپرس</a></h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="post-txt">
-                        <h4>چگونه سایت بسازیم؟ این سوالی است که در ابتدای کار شاید کمی سخت و پیچیده بنظر برسد یا شاید با
-                            ...</h4>
-                    </div>
-                    <div class="post-foot-container">
-                        <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
-                        <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
-                    </div>
-                    <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">آموزش نصب بسته نصبی آسان وردپرس</a>
-                        </h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="post-txt">
-                        <h4>نصب بسته نصبی آسان در وردپرس یکی از کاربردی ترین امکاناتی از است که توسط افزونه duplicator
-                            فراهم شده، اگر ...</h4>
-                    </div>
-                    <div class="post-foot-container">
-                        <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
-                        <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
-                    </div>
-                    <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">آموزش ساخت اسلایدر با افزونه</a>
-                        </h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="post-txt">
-                        <h4>آموزش نصب وردپرس روی هاست cpanel اولین چیزی هست که برای راه اندازی یک سایت وردپرسی به آن
-                            نیاز دارید. ...</h4>
-                    </div>
-                    <div class="post-foot-container">
-                        <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
-                        <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
-                    </div>
-                    <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">آموزش ساخت اسلایدر با افزونه</a>
-                        </h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="post-txt">
-                        <h4>آموزش نصب وردپرس روی هاست cpanel اولین چیزی هست که برای راه اندازی یک سایت وردپرسی به آن
-                            نیاز دارید. ...</h4>
-                    </div>
-                    <div class="post-foot-container">
-                        <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
-                        <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
-                    </div>
-                    <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">آموزش ساخت اسلایدر با افزونه</a>
-                        </h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="post-txt">
-                        <h4>آموزش نصب وردپرس روی هاست cpanel اولین چیزی هست که برای راه اندازی یک سایت وردپرسی به آن
-                            نیاز دارید. ...</h4>
-                    </div>
-                    <div class="post-foot-container">
-                        <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
-                        <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
-                    </div>
-                    <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">آموزش ساخت اسلایدر با افزونه</a>
-                        </h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="post-txt">
-                        <h4>آموزش نصب وردپرس روی هاست cpanel اولین چیزی هست که برای راه اندازی یک سایت وردپرسی به آن
-                            نیاز دارید. ...</h4>
-                    </div>
-                    <div class="post-foot-container">
-                        <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
-                        <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="thumb">
-                        <img src="img/default.jpg" width="260" height="150">
-                    </div>
-                    <div class="post-title">
-                        <h2><a target="_blank" href="/single/4" dideo-checked="true">آموزش ساخت اسلایدر با افزونه</a>
-                        </h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="post-txt">
-                        <h4>آموزش نصب وردپرس روی هاست cpanel اولین چیزی هست که برای راه اندازی یک سایت وردپرسی به آن
-                            نیاز دارید. ...</h4>
-                    </div>
-                    <div class="post-foot-container">
-                        <div class="line-border"></div>
-                        <div class="p-c-view"><i class="fa fa-eye"></i>1395/6/26</div>
-                        <div class="p-c-comment"><i class="fa fa-comment"></i></div>
-                        <div class="p-c-view"><i class="fa fa-comment"></i> نویسنده : رضاحیدری</div>
-                    </div>
-                </article>
-
+                <?php endif; ?>
+                <?php endif; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

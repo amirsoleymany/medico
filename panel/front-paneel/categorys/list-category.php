@@ -55,7 +55,7 @@ if(strpos($select_permitions->permition,'list-category.php') !==false):*/
                             <label class="custom-control-label" for="customSwitch1"></label>
                         </div>
                     </td>
-                    <td><a href="dashboard.php?page=new-category&id=<?php echo $cat->id; ?>" class="btn btn-primary btn-xs"  style="border-radius: 50px;">
+                    <td><a href="dashboard.php?page=edit-category&id=<?php echo $cat->id; ?>" class="btn btn-primary btn-xs"  style="border-radius: 50px;">
                             <svg class="bi bi-pencil" width="0.8em" height="1.2em"
                                  viewBox="0 0 16 16" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +105,7 @@ if(strpos($select_permitions->permition,'list-category.php') !==false):*/
                                 <label class="custom-control-label" for="customSwitch1"></label>
                             </div>
                         </td>
-                        <td><a href="dashboard.php?page=new-category&id=<?php echo $subcat->id; ?>" class="btn btn-primary btn-xs"  style="border-radius: 50px;">
+                        <td><a href="dashboard.php?page=edit-category&id=<?php echo $subcat->id; ?>" class="btn btn-primary btn-xs"  style="border-radius: 50px;">
                                 <svg class="bi bi-pencil" width="0.8em" height="1.2em"
                                      viewBox="0 0 16 16" fill="currentColor"
                                      xmlns="http://www.w3.org/2000/svg">

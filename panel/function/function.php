@@ -24,5 +24,4 @@ function select_user_permition($username){
     $res2=$query2->fetch(PDO::FETCH_OBJ);
     return $res2;
 }
-
 ?>

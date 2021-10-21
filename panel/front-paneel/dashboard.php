@@ -50,6 +50,10 @@ ob_start();
                             include_once 'users/config-access.php';
                             break;
 
+                        case 'delete-access' :
+                            include_once 'users/delete-access.php';
+                            break;
+
                         case 'status-report' :
                             include_once 'users/status-report.php';
                             break;
@@ -62,8 +66,8 @@ ob_start();
                             include_once 'users/example_client.php';
                             break;
 
-                        case 'edit_info_user' :
-                            include_once 'users/edit_info_user.php';
+                        case 'edit-info-user' :
+                            include_once 'users/edit-info-user.php';
                             break;
 
                         case 'new-category' :
@@ -96,6 +100,70 @@ ob_start();
 
                         case 'delete-article' :
                             include_once 'article/delete-article.php';
+                            break;
+
+                        case 'list-users' :
+                            include_once 'users/list_users.php';
+                            break;
+
+                        case 'setting-slider' :
+                            include_once 'slider/setting-slider.php';
+                            break;
+
+                        case 'edit_slider_info' :
+                            include_once 'slider/edit-slider_info.php';
+                            break;
+
+                        case 'import-slider' :
+                            include_once 'slider/import-slider.php';
+                            break;
+
+                        case 'edit_slide_info' :
+                            include_once 'slider/edit_slide_info.php';
+                            break;
+
+                        case 'delete_slide_info' :
+                            include_once 'slider/delete_slide_info.php';
+                            break;
+
+                        case 'delete-slider_info' :
+                            include_once 'slider/delete-slider_info.php';
+                            break;
+
+                        case 'list-slider' :
+                            include_once 'slider/list-slider.php';
+                            break;
+
+                        case 'take-turns' :
+                            include_once 'patients/take-turns.php';
+                            break;
+
+                        case 'setting_widget' :
+                            include_once 'widget/setting_widget.php';
+                            break;
+
+                        case 'edit-widget' :
+                            include_once 'widget/edit_widget.php';
+                            break;
+
+                        case 'delete-widget' :
+                            include_once 'widget/delete_widget.php';
+                            break;
+
+                        case 'setting_page' :
+                            include_once 'page/setting_page.php';
+                            break;
+
+                        case 'delete-groupe-page' :
+                            include_once 'page/delete-groupe-page.php';
+                            break;
+
+                        case 'delete-page' :
+                            include_once 'page/delete-page.php';
+                            break;
+
+                        case 'single_page' :
+                            include_once 'page/single_page.php';
                             break;
                     }
                 }

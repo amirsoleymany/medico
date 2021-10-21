@@ -1,3 +1,6 @@
+<head>
+    <title>حذف دسته بندی</title>
+</head>
 <?php
 include_once '../function/f-category.php';
 $id_comment = $_GET['id'];

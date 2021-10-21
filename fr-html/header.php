@@ -13,7 +13,7 @@
                 <a href="login.php" class="login">داشبورد من</a>
                 <a href="register.php" class="sabtnam">خروج</a>
                 <?php else: ?>
-                <a href="login.php" class="login">ورود به داشبورد</a>
+                <a href="http://localhost/medico/panel/front-paneel/dashboard.php" class="login">ورود به داشبورد</a>
                 <a href="register.php" class="sabtnam">ثبت نام در سایت</a>
                 <?php endif; ?>
 

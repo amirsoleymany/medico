@@ -6,16 +6,16 @@ function insert_info_user($info,$img){
     $mellicode=$info['mellicode'];$fullname = $info['fullname'];$fathername=$info['fathername'];$birthday=$info['birthday'];$degree=$info['degree'];$field=$info['field'];$phone=$info['phone'];$state=$info['state'];
     $city=$info['city'];$email=$info['email'];$linkedin=$info['linkedin'];$instagram=$info['instagram'];$telegram=$info['telegram'];$life_address=$info['life_address'];$office_address=$info['office_address'];$top_skill=$info['top_skill'];$desc_skill=$info['desc_skill'];
     $permition=$info['permition'];$author=$_SESSION['login_user'];$date_register=date('Y/m/d');$status=$info['status'];
-    $main_dir = "../front-paneel/bootstrap/img/users/$fullname";
+    $main_dir = "../img/users/$fullname";
     $new_state = select_state_by_id($state);
     $name_state = $new_state->name;
     mkdir($main_dir);
     if(!$img['name'] == ""){
-        $dir_pics = upload_pics($img,"../front-paneel/bootstrap/img/users/$fullname/");
+        upload_pics($img,"../img/users/$fullname/");
     }
     $password = sha1($mellicode);
     $pdo=connect_db();
-    $query=$pdo->prepare("INSERT INTO users_tbl (username, password, mellicode, fullname, fathername, birthday, degree, field, phone, state, city, email, linkediin, instagram, telegram, life_address, office_address, top_skill, desc_skill, img, permition, author, date_register, status) VALUES ('$email', '$password', '$mellicode', '$fullname', '$fathername', '$birthday', '$degree', '$field', '$phone', '$name_state', '$city', '$email', '$linkedin', '$instagram', '$telegram', '$life_address', '$office_address', '$top_skill', '$desc_skill', '$dir_pics', '$permition', '$author', '$date_register', '$status')");
+    $query=$pdo->prepare("INSERT INTO users_tbl (username, password, mellicode, fullname, fathername, birthday, degree, field, phone, state, city, email, likedin, instagram, telegram, life_address, office_address, top_skill, desc_skill, img, permition, author, date_register, status) VALUES ('$email', '$password', '$mellicode', '$fullname', '$fathername', '$birthday', '$degree', '$field', '$phone', '$name_state', '$city', '$email', '$linkedin', '$instagram', '$telegram', '$life_address', '$office_address', '$top_skill', '$desc_skill', upload_pics() , '$permition', '$author', '$date_register', '$status')");
     $query->execute();
 }
 function select_state(){

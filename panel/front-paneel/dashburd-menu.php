@@ -16,8 +16,8 @@ include_once '../function/f-users.php';
                             $user_info = select_user_with_session($session);
                             $user_permition = select_permition_url($user_info->permition);
                             ?>
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkWCEGpuakGVhwczoA5D93q1m3iUQ4vaYAc07uvcvBJfAzAT9XBQzlg_l47jY03KG5xvQ&amp;usqp=CAU">
-                            <p style="position:relative;bottom: 29px !important;"> <a style="background: #f1f1f1;padding: 6px;font-size: 13px;border-radius: 45px;position: relative;top: 36px;color: black;"><?php echo $user_info-> fullname." "."|"." ";  ?></a></p>
+                          <img src="<?php echo $user_info->img ?>">../img/users/امیر حسین سلیمانی
+                            <p style="position:relative;bottom: 29px !important;"> <a style="background: #f1f1f1;padding: 6px;font-size: 13px;border-radius: 45px;position: relative;top: 36px;color: black;"><?php echo $user_info-> fullname." | ".$user_permition-> name?></a></p>
                             <p></p>
                         </div>
 
@@ -67,7 +67,7 @@ include_once '../function/f-users.php';
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                                     <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
                                 </svg>
-مدیریت امور پرسنل
+مدیریت ابزارک ها
 <span style="float: left;">
                                 <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 20 20"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -79,11 +79,8 @@ include_once '../function/f-users.php';
                             </a>
                         </li>
                         <ul class="sub-staff">
-                            <li><a href="#">سیستم استخدام</a></li>
-                            <li><a href="#">سیستم کارورزی و کارآموزی</a></li>
-                            <li><a href="#">دریافت خلاصه گزارش پرسنلی</a></li>
-                            <li><a href="#">ثبت مرخصی پرسنل</a></li>
-                            <li><a href="#">پیکربندی تنطیمات محاسبات پرسنلی</a></li>
+                            <li><a href="dashboard.php?page=setting_widget">تنظیمات پیکربندی ابزارک</a></li>
+                            <li><a href="#">مشاهده همه ابزارک ها</a></li>
 
                         </ul>
 
@@ -105,8 +102,8 @@ include_once '../function/f-users.php';
                             </a>
                         </li>
                         <ul class="sub-patients">
-                            <li><a href="#">پیکربندی تنظیمات نوبت دهی پزشک</a></li>
-                            <li><a href="#">سیستم جامع پرونده الکترونیکی بیمار</a></li>
+                            <li><a href="dashboard.php?page=take-turns">نوبت دهی به بیمار</a></li>
+                            <!--<li><a href="#">سیستم جامع پرونده الکترونیکی بیمار</a></li>
                             <li><a href="#">تنظیمات پیکربندی پرونده الکترونیک</a></li>
                             <li><a href="#">ایجاد پرونده الکترونیکی جدید</a></li>
                             <li><a href="#">مدیریت پرونده الکترونیک جاری</a></li>
@@ -119,7 +116,7 @@ include_once '../function/f-users.php';
                             <li><a href="#">دریافت گزارش سوابق بیمار</a></li>
                             <li><a href="#">ثبت گزارش آزمایشات واصله</a></li>
                             <li><a href="#">ثبت گزارش جراحی بیمار</a></li>
-                            <li><a href="#">ثبت گزارشات متفرقه</a></li>
+                            <li><a href="#">ثبت گزارشات متفرقه</a></li>-->
 
                         </ul>
 
@@ -129,7 +126,7 @@ include_once '../function/f-users.php';
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
                                     <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"></path>
                                 </svg>
-امور مالی
+مدیریت اسلایدرها
 <span style="float: left;">
                                 <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 20 20"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -141,19 +138,8 @@ include_once '../function/f-users.php';
                             </a>
                         </li>
                         <ul class="sub-accounting">
-                            <li><a href="#">پیکربندی تنظیمات اسناد مالی سیستم</a></li>
-                            <li><a href="#">سیستم جامع پرداخت</a></li>
-                            <li><a href="#">ثبت دستی پرداخت موردی</a></li>
-                            <li><a href="#">ثبت گروهی پرداخت</a></li>
-                            <li><a href="#">سیستم پرداخت حقوق و دستمزد</a></li>
-                            <li><a href="#">پیکربندی تنطیمات محاسبات پرداخت حقوق و دستمزد</a></li>
-                            <li><a href="#">پرداخت موردی حقوق و دستمزد پرسنل</a></li>
-                            <li><a href="#">پرداخت خودکار حقوق و دستمزد</a></li>
-                            <li><a href="#">گزارشات امور مالی</a></li>
-                            <li><a href="#">دریافت خلاصه گزارش مالی سیستم</a></li>
-                            <li><a href="#">دریافت گزارش جامع مالی سیستم</a></li>
-                            <li><a href="#">دریافت گزارش پرداخت حقوق و دستمزد</a></li>
-
+                            <li><a href="dashboard.php?page=setting-slider">تنظیمات فعالسازی اسلایدر</a></li>
+                            <li><a href="dashboard.php?page=list-slider">مشاهده همه اسلایدر ها</a></li>
                         </ul>
 
 
@@ -202,6 +188,28 @@ include_once '../function/f-users.php';
                             <li><a href="dashboard.php?page=list_article">مشاهده همه نوشته ها</a></li>
                             <li><a href="#">مشاهده همه نظرات کاربران </a></li>
                             <li><a href="dashboard.php?page=add-article">افزودن نوشنه جدید</a></li>
+                        </ul>
+
+                        <li class="page">
+                            <a href="javascript:;"style="color: #000000;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-chat-text" viewBox="0 0 16 16">
+                                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"></path>
+                                    <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8zm0 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"></path>
+                                </svg>
+                                مدیریت صفحات
+                                <span style="float: left;">
+                                <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 20 20"
+                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M3.646 6.646a.5.5 0 01.708 0L10 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z"
+                                      clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            </a>
+                        </li>
+                        <ul class="sub-page">
+                            <li><a href="dashboard.php?page=setting_page">پیکربندی صفحه جدید</a></li>
+                            <li><a href="dashboard.php?page=single_page">پیکربندی تک صفحه</a></li>
                         </ul>
                      </ul>
                 </div>

@@ -1,8 +1,8 @@
 <?php
 include_once '../function/f-users.php';
 include_once '../function/function.php';
-/*$select_permitions = select_user_permition($_SESSION['login_user']);
-if(strpos($select_permitions->permition,'config_access.php') !==false):*/
+$select_permitions = select_user_permition($_SESSION['login_user']);
+if(strpos($select_permitions->permition,'config-access.php') !==false):
 $update = false;
 if(isset($_GET['id_page'])){
     $update = true;
@@ -142,10 +142,10 @@ if(isset($_POST['update_access'])){
                 </div>
 
                 <div class="row" >
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="font-size: 17px;">
                         <h5>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-inboxes" style="color: #6d6e6b;" viewBox="0 0 16 16">
-                                <path d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1H4.98zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562A.5.5 0 0 0 1.884 9h12.234a.5.5 0 0 0 .496-.438L14.933 6zM3.809.563A1.5 1.5 0 0 1 4.981 0h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374L3.81.563zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393zm.941.83.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438l.32-2.562H10.45a2.5 2.5 0 0 1-4.9 0H1.066z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
                             </svg>
                             مدیریت کاربران</h5><br>
                         <?php
@@ -167,7 +167,90 @@ if(isset($_POST['update_access'])){
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
+
+                    <div class="col-md-4" style="font-size: 17px;">
+                        <h5>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"></path>
+                            </svg>
+                            مدیریت اسلایدر ها</h5><br>
+                        <?php
+                        $dir_Category = 'slider/';
+                        $scan_dir_Category = scandir($dir_Category);
+                        foreach ($scan_dir_Category as $key=>$file) :
+                            $tempext=explode(".",$file);
+                            if (end($tempext)=="php") :
+                                $title = page_title ("slider/".$file).'';
+                                if ($title!='') :
+                                    ?>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name = page[] type="checkbox" id="<?php echo 'slider'.$key; ?>" value="<?php echo $file;?>"  <?php if($update){if(strpos($up_permition->permition , $file) !==false){ echo 'checked';}} ?>>
+                                        <label class="form-check-label" for="<?php echo 'slider'.$key; ?>"><?php echo $title; ?></label>
+                                    </div>
+
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <div class="col-md-4" style="font-size: 17px;">
+                        <h5>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                            </svg>
+                            مدیریت دسته ها</h5><br>
+                        <?php
+                        $dir_Category = 'categorys/';
+                        $scan_dir_Category = scandir($dir_Category);
+                        foreach ($scan_dir_Category as $key=>$file) :
+                            $tempext=explode(".",$file);
+                            if (end($tempext)=="php") :
+                                $title = page_title ("categorys/".$file).'';
+                                if ($title!='') :
+                                    ?>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name = page[] type="checkbox" id="<?php echo 'categorys'.$key; ?>" value="<?php echo $file;?>"  <?php if($update){if(strpos($up_permition->permition , $file) !==false){ echo 'checked';}} ?>>
+                                        <label class="form-check-label" for="<?php echo 'categorys'.$key; ?>"><?php echo $title; ?></label>
+                                    </div>
+
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-4" style="font-size: 17px;">
+                            <h5>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-chat-text" viewBox="0 0 16 16">
+                                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"></path>
+                                    <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8zm0 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"></path>
+                                </svg>
+                                مدیریت نوشته ها</h5><br>
+                            <?php
+                            $dir_Category = 'article/';
+                            $scan_dir_Category = scandir($dir_Category);
+                            foreach ($scan_dir_Category as $key=>$file) :
+                                $tempext=explode(".",$file);
+                                if (end($tempext)=="php") :
+                                    $title = page_title ("article/".$file).'';
+                                    if ($title!='') :
+                                        ?>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name = page[] type="checkbox" id="<?php echo 'article'.$key; ?>" value="<?php echo $file;?>"  <?php if($update){if(strpos($up_permition->permition , $file) !==false){ echo 'checked';}} ?>>
+                                            <label class="form-check-label" for="<?php echo 'article'.$key; ?>"><?php echo $title; ?></label>
+                                        </div>
+
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                     <hr>
                     <?php
                     if($update):
@@ -182,9 +265,7 @@ if(isset($_POST['update_access'])){
             <br>
             <br>
         </div>
-        <br><hr>
-        <h5 style="text-align: center;
-    background-color: #6c757d;padding: 15px;border-radius: 10px;"> لیست دسترسی ها</h5>
+        <br>
         <br>
         <?php include_once 'list-access.php'; ?>
      </div>
@@ -192,11 +273,11 @@ if(isset($_POST['update_access'])){
 <?php endif;?>
 </body>
 </html>
-<?php /*else:*/?><!--
+<?php else:?>
     <div class="alert alert-danger alert-dismissible fade show" style="line-height: 28px;" role="alert">
         <strong>کاربر محترم!<br></strong> شما به بخش ایجاد و ویرایش مجوز دسترسی ندارید
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-    </div>-->
-<?php /*endif;*/?>
+    </div>
+<?php endif;?>

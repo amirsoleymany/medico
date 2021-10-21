@@ -2,25 +2,16 @@
 include_once '../function/f-category.php';
 include_once '../function/dbconnect.php';
 include_once '../function/function.php';
+
 /*$select_permitions = select_user_permition($_SESSION['login_user']);
 if(strpos($select_permitions->permition,'add-category.php') !==false):*/
+
     if(isset($_POST['send'])){
         $info=$_POST['info'];
         add_category($info);
-        header("location:dashboard.php?pages=list-category");
+        header("location:dashboard.php?page=new-category");
     }
-    $id = $_GET['id'];
-if(isset($_POST['update'])){
-    $info = $_POST['info'];
-    update_category($id,$info);
-    header("location: dashboard.php?pages=list-category");
-}
-if(isset($_POST['back'])){
-    header("location: dashboard.php?pages=list-category");
-}
-$current_cat = edit_category($id);
-foreach ($current_cat as $cat) : ?>
-
+?>
     <!doctype html>
     <html lang="en">
     <head>
@@ -38,9 +29,9 @@ foreach ($current_cat as $cat) : ?>
             <div class="col-md-9" style="margin-right: 46px;">
                 <form class="my-form" method="post" enctype="multipart/form-data" style="box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 0px 0 rgb(0 0 0);background-color:  rgb(241 241 241);padding: 41px;">
                 <p class="title-form">افزودن دسته جدید</p>
-                <input class="form-control inputbig" type="text" name="info[title]" placeholder="عنوان را اینجا وارد کنید" required value="<?php echo $cat->title ?>">
+                <input class="form-control inputbig" type="text" name="info[title]" placeholder="عنوان را اینجا وارد کنید" required>
                 <br>
-                <input class="form-control inputbig" type="text" name="info[sort]" placeholder="ترتیب نمایش را بصورت عددی ایجاد کنید" required value="<?php echo $cat->sort ?>">
+                <input class="form-control inputbig" type="text" name="info[sort]" placeholder="ترتیب نمایش را بصورت عددی ایجاد کنید" required>
                 <br>
                 <select class="form-control" aria-label="Default select example" name="info[parrent]" required>
                     <option value="0">انتخاب به عنوان سرگروه منو</option>
@@ -52,23 +43,17 @@ foreach ($current_cat as $cat) : ?>
 
                 </select><br>
                 <div class="custom-control custom-switch" style="direction: initial;">
-                    <input name="info[status]" type="checkbox" class="custom-control-input" id="customSwitch1"<?php if($cat->status == 'on'){ echo " checked ";} ?>>
+                    <input name="info[status]" type="checkbox" class="custom-control-input" id="customSwitch1">
                     <label class="custom-control-label" for="customSwitch1">فعال|غیرفعال</label>
                 </div><br> <hr>
                     <div style="direction: initial;">
-                        <?php if ($cat = true): ?>
-                            <a class="btn btn-danger" href="dashboard.?page=list-category">بازگشت</a>
-                            <input type="submit" name="update" value="ویرایش" class="btn btn-primary btn-addmenue" style="margin-left: 5px;" href="dashboard.?page=list-category">
-                        <?php else:?>
                 <a class="btn btn-danger" href="http://localhost/medico/panel/front-paneel/dashboard.php">بازگشت</a>
                 <input type="submit" name="send" value=" ایجاد منو" class="btn btn-primary btn-addmenue" style="margin-left: 5px;">
-    <?php endif; ?>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <?php endforeach;?>
     </body>
     </html>
 <?php /*else:*/?><!--

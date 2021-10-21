@@ -27,7 +27,7 @@ foreach ($current_cat as $cat) : ?>
         <div class="col-md-9" style="margin-right: 46px;">
             <form class="my-form" method="post" enctype="multipart/form-data" style="box-shadow: 0 0 20px 0 rgb(0 0 0), 0px 0px 0px 0 rgb(0 0 0);background-color:  rgb(241 241 241);padding: 41px;">
                 <p class="title-form">افزودن دسته جدید</p>
-            <input class="form-control inputbig" type="text" name="info[title]" placeholder="عنوان را اینجا وارد کنید" value="<?php echo $cat->title ?>"
+            <input class="form-control inputbig" type="text" name="info[title]" placeholder="عنوان را اینجا وارد کنید" value="<?php echo $cat->title ?>">
             <br>
             <input class="form-control inputbig" type="text" name="info[sort]" placeholder="ترتیب نمایش را بصورت عددی ایجاد کنید" value="<?php echo $cat->sort ?>">
             <br>
